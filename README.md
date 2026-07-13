@@ -1,2 +1,2 @@
-# kishan-thummar.github.io
+# Kishan Thummar
 Personalized Portfolio
