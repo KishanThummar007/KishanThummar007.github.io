@@ -29,10 +29,3 @@ A single static page served by GitHub Pages.
 | `index.html` | the website (HTML and CSS in one file) |
 | `profile.jpg` | profile photo |
 | `media/` | short videos and images shown next to the publications |
-
-To preview it locally:
-
-```bash
-python -m http.server 8000
-# then open http://localhost:8000
-```
