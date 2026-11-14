@@ -1,805 +1,352 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kishan Thummar — Robotics & Simulation Engineer Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>Kishan Thummar</title>
+<meta name="description" content="Kishan Thummar — M.Sc. Electromobility-ACES (FAU Erlangen-Nürnberg). Robotic simulation, world models and path planning for wire harness manufacturing.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
-    --teal: #1D9E75;
-    --teal-light: #E1F5EE;
-    --teal-dark: #0F6E56;
-    --teal-xdark: #085041;
-    --amber: #EF9F27;
-    --amber-light: #FAEEDA;
-    --coral: #D85A30;
-    --coral-light: #FAECE7;
-    --blue: #378ADD;
-    --blue-light: #E6F1FB;
-    --gray-bg: #F7F6F2;
-    --gray-dark: #2C2C2A;
-    --gray-mid: #5F5E5A;
-    --gray-light: #D3D1C7;
-    --white: #FFFFFF;
-    --font-display: 'Space Mono', monospace;
-    --font-body: 'DM Sans', sans-serif;
-    --radius: 12px;
-    --radius-sm: 6px;
+    --bg: #ffffff;
+    --bg-soft: #f6f7f9;
+    --ink: #1a1d23;
+    --ink-2: #4a505c;
+    --muted: #7a808c;
+    --rule: #e3e6eb;
+    --accent: #1f4e8c;
+    --accent-soft: #eaf0f8;
+    --serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+    --sans: 'Manrope', -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+    color-scheme: light;
   }
-
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 1.5rem; }
   body {
-    font-family: var(--font-body);
-    background: var(--gray-bg);
-    color: var(--gray-dark);
-    min-height: 100vh;
-    line-height: 1.6;
-    overflow-x: hidden;
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
   }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; text-underline-offset: 3px; }
+  h1, h2, h3 { font-family: var(--serif); font-weight: 500; color: var(--ink); text-wrap: balance; margin: 0; }
+  h3 { text-wrap: pretty; }
 
-  /* NAV */
-  nav {
-    position: sticky;
-    top: 0;
-    background: rgba(247,246,242,0.95);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--gray-light);
-    z-index: 100;
-    padding: 0 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 52px;
-  }
-  .nav-logo {
-    font-family: var(--font-display);
-    font-size: 13px;
-    color: var(--teal-dark);
-    letter-spacing: 0.05em;
-    text-decoration: none;
-  }
-  .nav-links {
-    display: flex;
-    gap: 1.5rem;
-    list-style: none;
-  }
-  .nav-links a {
-    font-size: 13px;
-    color: var(--gray-mid);
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--teal); }
-
-  /* HERO */
-  .hero {
-    position: relative;
-    padding: 5rem 2rem 4rem;
-    max-width: 960px;
+  /* LAYOUT */
+  .page {
+    max-width: 920px;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 3rem;
-    align-items: center;
-  }
-  .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: var(--teal-light);
-    color: var(--teal-dark);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    border-radius: 99px;
-    margin-bottom: 1.25rem;
-  }
-  .hero-badge::before {
-    content: '';
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--teal);
-    animation: pulse 2s infinite;
-  }
-  @keyframes pulse {
-    0%,100% { opacity:1; transform:scale(1); }
-    50% { opacity:0.5; transform:scale(1.3); }
-  }
-  .hero h1 {
-    font-family: var(--font-display);
-    font-size: clamp(2rem, 5vw, 3.2rem);
-    font-weight: 700;
-    color: var(--gray-dark);
-    line-height: 1.15;
-    margin-bottom: 0.5rem;
-  }
-  .hero h1 span { color: var(--teal); }
-  .hero-sub {
-    font-size: 1.1rem;
-    color: var(--gray-mid);
-    margin-bottom: 1.5rem;
-    font-weight: 300;
-  }
-  .hero-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 2rem;
-  }
-  .tag {
-    background: var(--white);
-    border: 1px solid var(--gray-light);
-    color: var(--gray-dark);
-    font-size: 12px;
-    font-weight: 500;
-    padding: 4px 12px;
-    border-radius: 99px;
-  }
-  .tag.accent { background: var(--teal-light); border-color: var(--teal); color: var(--teal-dark); }
-  .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
-  .btn-primary {
-    background: var(--teal);
-    color: var(--white);
-    border: none;
-    padding: 10px 22px;
-    border-radius: var(--radius-sm);
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-flex; align-items: center; gap: 6px;
-    transition: background 0.2s;
-  }
-  .btn-primary:hover { background: var(--teal-dark); }
-  .btn-outline {
-    background: transparent;
-    color: var(--gray-dark);
-    border: 1px solid var(--gray-light);
-    padding: 10px 22px;
-    border-radius: var(--radius-sm);
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-flex; align-items: center; gap: 6px;
-    transition: border-color 0.2s;
-  }
-  .btn-outline:hover { border-color: var(--gray-mid); }
-
-  /* AVATAR */
-  .avatar-wrap {
-    width: 160px; height: 160px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--teal-light) 0%, var(--teal) 100%);
-    display: flex; align-items: center; justify-content: center;
-    font-family: var(--font-display);
-    font-size: 2.5rem;
-    color: var(--white);
-    flex-shrink: 0;
-    border: 3px solid var(--teal-light);
-    box-shadow: 0 0 0 6px var(--white), 0 0 0 8px var(--teal-light);
+    padding: 4.5rem max(28px, env(safe-area-inset-right, 0px)) 3rem max(28px, env(safe-area-inset-left, 0px));
   }
 
-  /* STATS BAR */
-  .stats-bar {
-    background: var(--white);
-    border-top: 1px solid var(--gray-light);
-    border-bottom: 1px solid var(--gray-light);
-    padding: 1.5rem 2rem;
-    display: flex;
-    justify-content: center;
-    gap: 0;
+  /* HEADER: name, bio, links left; photo right */
+  .hero { display: grid; grid-template-columns: minmax(0, 1fr) 190px; gap: 3rem; align-items: center; margin-bottom: 2.4rem; }
+  .hero h1 { font-size: clamp(2.2rem, 5.5vw, 3.1rem); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+  .role { font-family: var(--serif); color: var(--muted); font-size: 1.15rem; margin: 0; }
+  .portrait {
+    width: 190px; height: 190px; border-radius: 50%; object-fit: cover; display: block;
+    border: 1px solid var(--rule);
+    transition: transform .35s ease, box-shadow .35s ease;
   }
-  .stat {
-    text-align: center;
-    flex: 1;
-    max-width: 200px;
-    padding: 0 1.5rem;
-    border-right: 1px solid var(--gray-light);
-  }
-  .stat:last-child { border-right: none; }
-  .stat-num {
-    font-family: var(--font-display);
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--teal);
-    display: block;
-  }
-  .stat-label {
-    font-size: 11px;
-    color: var(--gray-mid);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    font-weight: 500;
-  }
+  .portrait:hover { transform: scale(1.05); box-shadow: 0 10px 28px rgba(26, 29, 35, .14); }
+  .links { list-style: none; padding: 0; margin: 1.6rem 0 0; display: flex; flex-wrap: wrap; gap: 0.5rem 1.4rem; font-size: 0.93rem; }
+  .links li { display: flex; align-items: center; gap: 0.45rem; color: var(--ink-2); }
+  .links svg { width: 16px; height: 16px; flex: none; fill: none; stroke: var(--muted); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+  .links a { color: var(--ink-2); }
+  .links a:hover { color: var(--accent); }
 
-  /* SECTIONS */
-  .section {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 3rem 2rem;
-  }
-  .section-label {
-    display: flex; align-items: center; gap: 10px;
-    font-family: var(--font-display);
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--gray-mid);
-    margin-bottom: 1.5rem;
-  }
-  .section-label::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--gray-light);
-  }
+  /* MAIN */
+  main { min-width: 0; }
+  section { padding-bottom: 2.6rem; margin-bottom: 2.6rem; border-bottom: 1px solid var(--rule); }
+  section:last-of-type { border-bottom: 0; }
+  h2 { font-size: 1.45rem; margin-bottom: 1.2rem; }
+  .bio p { margin: 0 0 1rem; color: var(--ink-2); }
+  .bio p:last-child { margin-bottom: 0; }
+  .interests { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.2rem; padding: 0; list-style: none; }
+  .interests li { font-size: 0.82rem; color: var(--accent); background: var(--accent-soft); padding: 0.2rem 0.7rem; border-radius: 4px; }
 
-  /* EXPERIENCE TIMELINE */
-  .timeline { position: relative; }
-  .timeline::before {
-    content: '';
-    position: absolute;
-    left: 20px;
-    top: 0; bottom: 0;
-    width: 2px;
-    background: var(--gray-light);
-  }
-  .timeline-item {
-    position: relative;
-    padding-left: 52px;
-    margin-bottom: 2.5rem;
-  }
-  .timeline-dot {
-    position: absolute;
-    left: 12px;
-    top: 4px;
-    width: 18px; height: 18px;
-    border-radius: 50%;
-    background: var(--teal);
-    border: 3px solid var(--gray-bg);
-    z-index: 1;
-  }
-  .timeline-dot.gray { background: var(--gray-mid); }
-  .timeline-card {
-    background: var(--white);
-    border: 1px solid var(--gray-light);
-    border-radius: var(--radius);
-    padding: 1.25rem 1.5rem;
-    transition: border-color 0.2s, box-shadow 0.2s;
-  }
-  .timeline-card:hover { border-color: var(--teal); box-shadow: 0 4px 16px rgba(29,158,117,0.08); }
-  .timeline-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; flex-wrap: wrap; gap: 6px; }
-  .timeline-role { font-size: 15px; font-weight: 600; color: var(--gray-dark); }
-  .timeline-company { font-size: 13px; color: var(--teal-dark); font-weight: 600; }
-  .timeline-period {
-    font-size: 11px;
-    color: var(--gray-mid);
-    background: var(--gray-bg);
-    padding: 3px 10px;
-    border-radius: 99px;
-    white-space: nowrap;
-    font-weight: 500;
-  }
-  .timeline-bullets { margin-top: 10px; }
-  .timeline-bullets li {
-    font-size: 13px;
-    color: var(--gray-mid);
-    margin-bottom: 5px;
-    padding-left: 14px;
-    position: relative;
-    list-style: none;
-  }
-  .timeline-bullets li::before {
-    content: '→';
-    position: absolute;
-    left: 0;
-    color: var(--teal);
-    font-size: 11px;
-  }
+  /* PUBLICATIONS */
+  .pubs { list-style: none; padding: 0; margin: 0; display: grid; gap: 1.5rem; }
+  .pub { display: grid; grid-template-columns: 230px minmax(0, 1fr); gap: 1.6rem; align-items: start; }
+  .pub-media { aspect-ratio: 16 / 10; border-radius: 8px; overflow: hidden; background: var(--bg-soft); border: 1px solid var(--rule); }
+  .pub-media video, .pub-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .pub-media.contain img, .pub-media.contain video { object-fit: contain; }
+  .pub-media.zoom-115 video { transform: scale(1.15); }
+  .pub-kind { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.2rem; }
+  .pub h3 { font-size: 1.08rem; line-height: 1.35; margin-bottom: 0.25rem; }
+  .pub h3 a.pub-link { color: inherit; }
+  .pub h3 a.pub-link:hover { color: var(--accent); }
+  .pub .venue { font-style: italic; color: var(--ink-2); font-size: 0.93rem; margin: 0 0 0.3rem; }
+  .pub p { margin: 0; color: var(--ink-2); font-size: 0.93rem; }
 
-  /* SKILLS */
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1rem;
-  }
-  .skill-card {
-    background: var(--white);
-    border: 1px solid var(--gray-light);
-    border-radius: var(--radius);
-    padding: 1.25rem;
-    transition: border-color 0.2s;
-  }
-  .skill-card:hover { border-color: var(--teal); }
-  .skill-card-icon {
-    width: 36px; height: 36px;
-    border-radius: 8px;
-    display: flex; align-items: center; justify-content: center;
-    margin-bottom: 10px;
-    font-size: 18px;
-  }
-  .skill-card h4 {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--gray-dark);
-    margin-bottom: 8px;
-  }
-  .skill-pills { display: flex; flex-wrap: wrap; gap: 4px; }
-  .skill-pill {
-    font-size: 11px;
-    padding: 2px 8px;
-    border-radius: 99px;
-    background: var(--gray-bg);
-    color: var(--gray-mid);
-    font-weight: 500;
-  }
+  /* CV ROWS (experience, education) */
+  .cv { display: grid; gap: 1.8rem; }
+  .cv-row { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 1.5rem; }
+  .cv-when { color: var(--muted); font-size: 0.86rem; padding-top: 0.15rem; }
+  .cv-when span { display: block; }
+  .cv-row h3 { font-size: 1.05rem; line-height: 1.35; }
+  .org { color: var(--accent); font-size: 0.93rem; font-weight: 500; margin: 0.1rem 0 0.5rem; }
+  .cv-row ul { margin: 0; padding-left: 1.1rem; color: var(--ink-2); font-size: 0.93rem; }
+  .cv-row li { margin-bottom: 0.3rem; }
+  .cv-row li::marker { color: var(--muted); }
 
   /* PROJECTS */
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1.25rem;
-  }
-  .project-card {
-    background: var(--white);
-    border: 1px solid var(--gray-light);
-    border-radius: var(--radius);
-    padding: 1.5rem;
-    transition: border-color 0.2s, transform 0.2s;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  .project-card:hover { border-color: var(--teal); transform: translateY(-2px); }
-  .project-tag {
-    display: inline-block;
-    font-size: 10px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    padding: 3px 10px;
-    border-radius: 99px;
-    margin-bottom: 4px;
-  }
-  .project-tag.robotics { background: var(--teal-light); color: var(--teal-dark); }
-  .project-tag.cv { background: var(--blue-light); color: #0C447C; }
-  .project-tag.rl { background: var(--amber-light); color: #633806; }
-  .project-tag.cad { background: var(--coral-light); color: #712B13; }
-  .project-tag.patent { background: #F3E8FF; color: #5B21B6; }
-  .project-card h3 { font-size: 15px; font-weight: 600; color: var(--gray-dark); }
-  .project-card p { font-size: 13px; color: var(--gray-mid); line-height: 1.6; flex: 1; }
-  .project-tools { display: flex; flex-wrap: wrap; gap: 4px; }
-  .project-tool {
-    font-size: 10px;
-    font-family: var(--font-display);
-    padding: 2px 8px;
-    border-radius: 4px;
-    background: var(--gray-bg);
-    color: var(--gray-mid);
-    border: 1px solid var(--gray-light);
-  }
+  .projects { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.6rem 2rem; }
+  .project { border-top: 2px solid var(--ink); padding-top: 0.8rem; display: flex; flex-direction: column; }
+  .project .kind { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.3rem; }
+  .project h3 { font-size: 1.05rem; line-height: 1.35; margin-bottom: 0.4rem; }
+  .project p { margin: 0 0 0.6rem; color: var(--ink-2); font-size: 0.92rem; flex: 1; }
+  .tools { font-size: 0.8rem; color: var(--muted); }
 
-  /* PUBLICATION */
-  .pub-card {
-    background: var(--white);
-    border: 1px solid var(--gray-light);
-    border-left: 4px solid var(--teal);
-    border-radius: var(--radius);
-    padding: 1.5rem;
-    margin-bottom: 1rem;
-  }
-  .pub-badge {
-    display: inline-flex; align-items: center; gap: 6px;
-    font-size: 11px; font-weight: 700; text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--teal-dark);
-    background: var(--teal-light);
-    padding: 3px 10px; border-radius: 99px;
-    margin-bottom: 10px;
-  }
-  .pub-card h3 { font-size: 15px; font-weight: 600; color: var(--gray-dark); margin-bottom: 6px; }
-  .pub-card p { font-size: 13px; color: var(--gray-mid); }
-  .pub-venue { font-size: 12px; color: var(--teal-dark); font-weight: 600; margin-top: 6px; }
+  /* SKILLS */
+  .skills { display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 0.55rem 1.5rem; margin: 0; }
+  .skills dt { font-weight: 600; font-size: 0.93rem; }
+  .skills dd { margin: 0; color: var(--ink-2); font-size: 0.93rem; }
 
   /* CONTACT */
-  .contact-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 1rem;
-  }
-  .contact-card {
-    background: var(--white);
-    border: 1px solid var(--gray-light);
-    border-radius: var(--radius);
-    padding: 1.25rem;
-    display: flex; align-items: center; gap: 12px;
-    text-decoration: none;
-    color: var(--gray-dark);
-    transition: border-color 0.2s;
-  }
-  .contact-card:hover { border-color: var(--teal); }
-  .contact-icon {
-    width: 38px; height: 38px;
-    border-radius: 8px;
-    background: var(--teal-light);
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-    font-size: 18px;
-  }
-  .contact-label { font-size: 11px; color: var(--gray-mid); text-transform: uppercase; letter-spacing: 0.06em; }
-  .contact-val { font-size: 13px; font-weight: 600; color: var(--gray-dark); word-break: break-all; }
+  .contact p { color: var(--ink-2); margin: 0 0 1rem; }
+  .contact dl { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 0.4rem 1rem; margin: 0; font-size: 0.95rem; }
+  .contact dt { color: var(--muted); }
+  .contact dd { margin: 0; overflow-wrap: anywhere; }
 
-  /* FULL-WIDTH SECTIONS */
-  .full-width-section {
-    background: var(--white);
-    border-top: 1px solid var(--gray-light);
-    border-bottom: 1px solid var(--gray-light);
-    padding: 3rem 0;
-  }
-  .full-width-section .section {
-    margin: 0 auto;
-  }
+  footer { max-width: 920px; margin: 0 auto; padding: 1.5rem max(24px, env(safe-area-inset-right, 0px)) 2.5rem max(24px, env(safe-area-inset-left, 0px)); color: var(--muted); font-size: 0.82rem; border-top: 1px solid var(--rule); }
 
-  /* FOOTER */
-  footer {
-    background: var(--gray-dark);
-    color: var(--gray-light);
-    text-align: center;
-    padding: 2rem;
-    font-size: 13px;
-    font-family: var(--font-display);
-    letter-spacing: 0.04em;
+  @media (max-width: 680px) {
+    .pub { grid-template-columns: 1fr; gap: 0.9rem; }
+    .pub-media { max-width: 360px; }
+    .page { padding-top: 2.5rem; }
+    .hero { grid-template-columns: 1fr; gap: 1.6rem; }
+    .portrait { width: 130px; height: 130px; order: -1; }
   }
-  footer span { color: var(--teal); }
-
   @media (max-width: 640px) {
-    .hero { grid-template-columns: 1fr; }
-    .avatar-wrap { display: none; }
-    .stats-bar { flex-wrap: wrap; }
-    .stat { border-right: none; border-bottom: 1px solid var(--gray-light); max-width: 100%; }
-    .stat:last-child { border-bottom: none; }
-    nav { padding: 0 1rem; }
-    .nav-links { gap: 0.8rem; }
+    .page, footer { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+    .projects { grid-template-columns: 1fr; }
+    .cv-row, .skills { grid-template-columns: 1fr; gap: 0.2rem; }
+    .skills dd { margin-bottom: 0.6rem; }
+    .cv-when span { display: inline; }
+    .cv-when span + span::before { content: " · "; }
   }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <a class="nav-logo" href="#">KT_</a>
-  <ul class="nav-links">
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#publications">Research</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
+<div class="page">
 
-<!-- HERO -->
-<section class="hero">
-  <div>
-    <div class="hero-badge">Available for hire · Erlangen, Germany</div>
-    <h1>Kishan<br><span>Thummar</span></h1>
-    <p class="hero-sub">Robotics & Simulation Engineer · Trajectory Planning · Reinforcement Learning</p>
-    <div class="hero-tags">
-      <span class="tag accent">MuJoCo Simulation</span>
-      <span class="tag accent">Trajectory Optimization</span>
-      <span class="tag accent">Reinforcement Learning</span>
-      <span class="tag">Computer Vision</span>
-      <span class="tag">Sim-to-Real Transfer</span>
-      <span class="tag">Python · C++ · ROS2</span>
-      <span class="tag">FANUC Cobots</span>
-    </div>
-    <div class="hero-ctas">
-      <a href="mailto:kishanthummar261@gmail.com" class="btn-primary">✉ Get in touch</a>
-      <a href="https://linkedin.com/in/kishanthummar28826" target="_blank" class="btn-outline">LinkedIn ↗</a>
-      <a href="https://github.com/KishanThummar007" target="_blank" class="btn-outline">GitHub ↗</a>
-    </div>
-  </div>
-  <div class="avatar-wrap">KT</div>
-</section>
 
-<!-- STATS -->
-<div class="stats-bar">
-  <div class="stat">
-    <span class="stat-num">M.Sc.</span>
-    <span class="stat-label">Electromobility-ACES · FAU</span>
-  </div>
-  <div class="stat">
-    <span class="stat-num">2</span>
-    <span class="stat-label">Patents (India)</span>
-  </div>
-  <div class="stat">
-    <span class="stat-num">1</span>
-    <span class="stat-label">IEEM Publication</span>
-  </div>
-  <div class="stat">
-    <span class="stat-num">1</span>
-    <span class="stat-label">Farama Gymnasium RL Env</span>
-  </div>
-  <div class="stat">
-    <span class="stat-num">7+</span>
-    <span class="stat-label">Robotics Projects</span>
-  </div>
+  <main>
+
+    <!-- HEADER -->
+    <header class="hero" id="about">
+      <div class="hero-text">
+        <h1>Kishan Thummar</h1>
+        <p class="role">M.Sc. Electromobility-ACES<br>Friedrich-Alexander-Universität Erlangen-Nürnberg</p>
+        <ul class="links">
+      <li><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Erlangen, Germany</li>
+      <li><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><a href="mailto:kishanthummar261@gmail.com">Email</a></li>
+      <li><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2.5 2.5 0 0 1 5 0v4M12 10v7"/></svg><a href="https://linkedin.com/in/kishanthummar28826" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><svg viewBox="0 0 24 24"><path d="M9 19c-4 1.3-4-2-6-2.5m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.6 11.6 0 0 0-6 0C6.8 2.3 5.8 2.6 5.8 2.6a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4.4 9c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg><a href="https://github.com/KishanThummar007" target="_blank" rel="noopener">GitHub</a></li>
+    </ul>
+      </div>
+      <img class="portrait" src="profile.jpg" alt="Kishan Thummar" width="600" height="600">
+    </header>
+
+    <section class="bio">
+
+      <p>I recently completed my master's degree (September 2026). I am interested in robotic simulation, world models and path planning, and in using them to automate wire harness manufacturing and assembly in the automotive industry.</p>
+      <p>In my master thesis at the Institute FAPS, I developed a MuJoCo framework that plans low-stress, collision-free trajectories and the picking order for loading a wire harness into a multi-gripper while avoiding wire tangling; this work has been accepted at IEEE IEEM 2026. My recent work focuses on <a href="https://ludwigstr.github.io/World-Models-for-DLO/" target="_blank" rel="noopener">benchmarking world models for wire harness handling</a>, comparing world and DLO dynamic models with physics simulators in predicting how cables move on a near-industry setup. In my project thesis, I developed a 3D vision algorithm that locates connector sockets for robotic plugging of a cable harness into a vehicle's centre console.</p>
+      <ul class="interests">
+        <li>Physics-based simulation</li><li>World models</li><li>Real-to-sim calibration</li><li>Deformable linear objects</li>
+        <li>Trajectory optimization</li><li>Wire harness automation</li><li>Reinforcement learning</li><li>Machine vision</li>
+      </ul>
+    </section>
+
+    <!-- PUBLICATIONS -->
+    <section id="publications">
+      <h2>Publications &amp; patents</h2>
+      <ol class="pubs">
+        <li class="pub">
+          <div class="pub-media contain zoom-115"><video autoplay muted loop playsinline preload="metadata" aria-label="Measured cables and predicted motion on the wire handling board"><source src="media/world-models-dlo.mp4?v=3" type="video/mp4"></video></div>
+          <div class="pub-body">
+          <div class="pub-kind">Conference paper</div>
+          <h3><a class="pub-link" href="https://ludwigstr.github.io/World-Models-for-DLO/" target="_blank" rel="noopener">World Models for Deformable Linear Objects: Benchmarking Physics-Based and Learned Approaches for Wire Harness Manufacturing</a></h3>
+          <p class="venue">60th CIRP Conference on Manufacturing Systems (CIRP CMS 2027)</p>
+          <p>A benchmark of six learned world and dynamics models and four physics simulators on a near-industry wire handling task, comparing how they represent and predict cable motion and physical properties such as stiffness and rest shape.</p>
+          </div>
+        </li>
+        <li class="pub">
+          <div class="pub-media"><video autoplay muted loop playsinline preload="metadata" aria-label="MuJoCo simulation of a multi-gripper loading wire harness branches"><source src="media/trajectory-multigripper.mp4" type="video/mp4"></video></div>
+          <div class="pub-body">
+          <div class="pub-kind">Conference paper</div>
+          <h3><a class="pub-link" href="https://github.com/KishanThummar007/Trajectory-Optimization-for-Wiring-Harnesses-connector-housings-using-Multi-Grippers" target="_blank" rel="noopener">Trajectory Planning and Optimization for Automated Cable Harness Installation using Multi-Gripper Systems</a></h3>
+          <p class="venue">IEEE International Conference on Industrial Engineering and Engineering Management (IEEM 2026)</p>
+          <p>Automated multi-gripper loading of automotive wire harnesses: collision-free trajectory planning, stress minimization and optimal sequence generation across multiple harness branches.</p>
+          </div>
+        </li>
+        <li class="pub">
+          <div class="pub-media"><video autoplay muted loop playsinline preload="metadata" aria-label="Reinforcement learning agent picking a wire harness connector"><source src="media/wireharness-rl.mp4" type="video/mp4"></video></div>
+          <div class="pub-body">
+          <div class="pub-kind">Gymnasium environment</div>
+          <h3><a class="pub-link" href="https://github.com/KishanThummar007/WireHarness-MultiGripper-RL" target="_blank" rel="noopener">WireHarness-MultiGripper-RL — A Gymnasium-Compatible RL Environment</a></h3>
+          <p class="venue">Farama Foundation · Gymnasium Third-Party Environments</p>
+          <p>Reinforcement learning environment for multi-gripper robotic wire harness assembly, built on the Gymnasium standard and listed in the Gymnasium third-party environment registry.</p>
+          </div>
+        </li>
+        <li class="pub">
+          <div class="pub-media"><video autoplay muted loop playsinline preload="metadata" aria-label="The Garuda UAV flying over a Mars landscape"><source src="media/garuda-uav.mp4" type="video/mp4"></video></div>
+          <div class="pub-body">
+          <div class="pub-kind">Design patent · 2025</div>
+          <h3>Unmanned Aerial Vehicle — The Garuda</h3>
+          <p class="venue">Intellectual Property India · Design No. 356263-001</p>
+          <p>An unmanned aerial vehicle for autonomous flight, soil sample collection and lava tube mapping for planetary exploration on Mars.</p>
+          </div>
+        </li>
+        <li class="pub">
+          <div class="pub-media contain"><img src="media/drawing-compass.jpg" alt="Prototype of the drawing compass operated by a key" loading="lazy"></div>
+          <div class="pub-body">
+          <div class="pub-kind">Patent · 2023</div>
+          <h3>Drawing Compass Operated by a Key</h3>
+          <p class="venue">Intellectual Property India · Patent No. 446560</p>
+          <p>A multi-functional compass and protractor with gear-driven angular movement and pulley-based radius measurement, for precise multi-arc drawing in a single operation.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <h2>Experience</h2>
+      <div class="cv">
+        <div class="cv-row">
+          <div class="cv-when"><span>Jul 2025 – Sep 2026</span><span>Nürnberg</span></div>
+          <div>
+            <h3>Master Thesis — Robotic Wire Harness Assembly</h3>
+            <p class="org">FAPS, Friedrich-Alexander-Universität Erlangen-Nürnberg</p>
+            <ul>
+              <li>Built a wire harness multi-gripper simulation in MuJoCo to grasp wire branches from a production assembly board, creating a realistic environment for testing and validating robotic trajectories</li>
+              <li>Designed a hybrid trajectory pipeline combining grid-based global search with gradient-based local refinement, achieving 80% collision-free and wire-tension-minimized paths</li>
+              <li>Developed a branch picking sequence algorithm to determine the optimal loading order of wire harness branches into the multi-gripper, minimizing entanglement risk and collisions</li>
+            </ul>
+          </div>
+        </div>
+        <div class="cv-row">
+          <div class="cv-when"><span>Oct 2024 – Mar 2025</span><span>Bamberg</span></div>
+          <div>
+            <h3>Software Development Intern — Fuel Cell Testing</h3>
+            <p class="org">Robert Bosch GmbH</p>
+            <ul>
+              <li>Developed a Python desktop application to automate fuel cell stack testing, reducing cycle time from hours to minutes and cutting operator effort by 90%</li>
+              <li>Automated the complete data logging and report generation pipeline, enabling fully automatic documentation without manual intervention</li>
+              <li>Analyzed experimental datasets from 24+ test configurations, providing structured insights that supported a 70% reduction in testing costs</li>
+            </ul>
+          </div>
+        </div>
+        <div class="cv-row">
+          <div class="cv-when"><span>Jun 2021 – Sep 2022</span><span>Surat, India</span></div>
+          <div>
+            <h3>CAD Engineer — Designer &amp; Rapid Prototyping</h3>
+            <p class="org">NS3DR Automation</p>
+            <ul>
+              <li>Designed precise 3D models and assemblies using SolidWorks, Siemens NX, and Creo Parametric for 20+ automotive manufacturing systems</li>
+              <li>Executed ANSYS FEA across 12+ design iterations, eliminating stress concentrations to improve structural integrity</li>
+              <li>Streamlined rapid prototyping by preparing parts for FDM and SLS 3D printing with G-Code processing</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="projects">
+        <article class="project">
+          <div class="kind">Robotics · Simulation</div>
+          <h3>Master Thesis — Wire Harness Multi-Gripper Assembly</h3>
+          <p>Developed a fully automated robotic insertion process for automotive wire harnesses using dual FANUC CRX cobots. Built a MuJoCo simulation modeling flexible cable physics and multi-gripper contact dynamics, with hybrid trajectory optimization and sequence planning for collision-free assembly.</p>
+          <div class="tools">MuJoCo · Python · IPS Cable Sim · FANUC CRX</div>
+        </article>
+        <article class="project">
+          <div class="kind">Reinforcement learning</div>
+          <h3>WireHarness-MultiGripper-RL Environment</h3>
+          <p>Custom Gymnasium-compatible RL training environment for multi-gripper robotic wire harness assembly. Trained and benchmarked RL agents using Stable-Baselines3 (SAC, TD3). Officially listed in the Farama Foundation's Gymnasium third-party environment registry.</p>
+          <div class="tools">Gymnasium · MuJoCo · Stable-Baselines3 · SAC / TD3</div>
+        </article>
+        <article class="project">
+          <div class="kind">Computer vision</div>
+          <h3>Robotic Cable Harness Plugging — Vision System</h3>
+          <p>Developed a 3D socket detection algorithm using MVTec HALCON and OpenCV achieving ±0.07 mm accuracy. Integrated with FANUC cobot via OPC-UA and Micro-Epsilon 3D stereo camera, validated over 1,000+ test cycles for automated cable assembly in premium automotive interiors.</p>
+          <div class="tools">HALCON · OpenCV · FANUC Cobot · OPC-UA</div>
+        </article>
+        <article class="project">
+          <div class="kind">FEA · CAD</div>
+          <h3>FEA &amp; Topological Optimization of Robotic Arms</h3>
+          <p>Conducted ANSYS FEA on 6-DOF robotic arm geometries (KUKA, FANUC), achieving 12% weight reduction via topological optimization while maintaining a 1.5 safety factor. Built physical proof-of-concept using FDM 3D printing and Raspberry Pi embedded control.</p>
+          <div class="tools">ANSYS · SolidWorks · FDM 3D Printing · Raspberry Pi</div>
+        </article>
+        <article class="project">
+          <div class="kind">Patent · Robotics</div>
+          <h3>The Garuda — Mars Exploration UAV</h3>
+          <p>Co-designed an unmanned aerial vehicle for Mars planetary exploration with autonomous flight, soil testing, and power generation capabilities. Earned Honourable Innovation Award from Mars Society South Asia. Design patent secured (No. 356263-001, IP India).</p>
+          <div class="tools">ANSYS CFD · CAD · Autonomous Nav · Patent</div>
+        </article>
+        <article class="project">
+          <div class="kind">Patent · Innovation</div>
+          <h3>Drawing Compass Operated by a Key</h3>
+          <p>Designed and patented a multi-functional compass and protractor with gear-driven angular movement and pulley-based radius measurement. 3D-printed prototype validated for students and architects. Patent No. 446560, Intellectual Property India.</p>
+          <div class="tools">CAD · FDM 3D Printing · Patent · Prototyping</div>
+        </article>
+        <article class="project">
+          <div class="kind">Robotics · AGV</div>
+          <h3>I-Robot — Automated Guided Vehicle for Restaurants</h3>
+          <p>Designed an AGV to autonomously deliver food and drinks between kitchen and tables, supporting contactless service and digital payment. Won the Innovation to Impact Award at the 11th GTU Innovation Sankul Awards 2022, backed by ₹1,90,000 government funding.</p>
+          <div class="tools">Arduino · Navigation · Prototyping · Award Winner</div>
+        </article>
+        <article class="project">
+          <div class="kind">Robotics · Rover</div>
+          <h3>FORTUITY — The Mars Rover</h3>
+          <p>Co-designed a next-generation Mars rover for the International Rover Design Challenge by Mars Society South Asia. Researched NASA Perseverance subsystems, 3D-printed and tested wheels for Mars-like soil friction, and designed autonomous navigation capabilities. Ranked 11th in Asia.</p>
+          <div class="tools">CAD · ANSYS · 3D Printing · Autonomous Nav</div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <h2>Skills</h2>
+      <dl class="skills">
+        <dt>Physics simulators</dt><dd>MuJoCo, NVIDIA Newton, Genesis, DLO-Lab, NVIDIA Isaac Gym, IPS Cable Simulation</dd>
+        <dt>World &amp; DLO dynamics models</dt><dd>RopeDreamer, PhysTwin, PhysWorld, AdaptiGraph, Yang et al. (IN-biLSTM), Caporali et al.; Real2Sim parameter identification</dd>
+        <dt>Robotics &amp; planning</dt><dd>Trajectory optimization, picking-sequence optimization, Farama Gymnasium, OMPL</dd>
+        <dt>Programming</dt><dd>Python, C++, C, MATLAB, SQL, ROS2 </dd>
+        <dt>ML &amp; reinforcement learning</dt><dd>PyTorch, JAX, Stable-Baselines3, SAC / TD3, Scikit-Learn, NumPy / SciPy</dd>
+        <dt>Computer vision</dt><dd>MVTec HALCON, OpenCV, 3D point clouds, stereo vision, surface-based matching</dd>
+        <dt>CAD &amp; engineering</dt><dd>SolidWorks, Siemens NX, CATIA, Fusion 360, ANSYS FEA, Simulink</dd>
+        <dt>Tools &amp; platforms</dt><dd>Git, VS Code, Jira, Confluence, Linux, Tableau</dd>
+      </dl>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+      <h2>Contact</h2>
+      <p>Open to full-time roles in Robotics, Simulation Engineering, Robot Learning, and Automation across Germany &amp; Europe.</p>
+      <dl>
+        <dt>Email</dt><dd><a href="mailto:kishanthummar261@gmail.com">kishanthummar261@gmail.com</a></dd>
+        <dt>LinkedIn</dt><dd><a href="https://linkedin.com/in/kishanthummar28826" target="_blank" rel="noopener">kishanthummar28826</a></dd>
+        <dt>GitHub</dt><dd><a href="https://github.com/KishanThummar007" target="_blank" rel="noopener">KishanThummar007</a></dd>
+        <dt>Location</dt><dd>Erlangen, Germany</dd>
+      </dl>
+    </section>
+
+  </main>
 </div>
 
-<!-- EXPERIENCE -->
-<section class="section" id="experience">
-  <div class="section-label">01 — Work history</div>
-  <div class="timeline">
-
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-card">
-        <div class="timeline-header">
-          <div>
-            <div class="timeline-role">Master Thesis — Robotic Wire Harness Assembly</div>
-            <div class="timeline-company">FAPS, Friedrich Alexander University</div>
-          </div>
-          <span class="timeline-period">Jul 2025 – Sep 2026 · Nürnberg</span>
-        </div>
-        <ul class="timeline-bullets">
-          <li>Built a wire harness multi-gripper simulation in MuJoCo to grasp wire branches from a production assembly board, creating a realistic environment for testing and validating robotic trajectories</li>
-          <li>Designed a hybrid trajectory pipeline combining grid-based global search with gradient-based local refinement, achieving 80% collision-free and wire-tension-minimized paths</li>
-          <li>Developed a branch picking sequence algorithm to determine the optimal loading order of wire harness branches into the multi-gripper, minimizing entanglement risk and collisions</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-card">
-        <div class="timeline-header">
-          <div>
-            <div class="timeline-role">Software Development Intern — Fuel Cell Testing</div>
-            <div class="timeline-company">Robert Bosch GmbH</div>
-          </div>
-          <span class="timeline-period">Oct 2024 – Mar 2025 · Bamberg</span>
-        </div>
-        <ul class="timeline-bullets">
-          <li>Developed a Python desktop application to automate fuel cell stack testing, reducing cycle time from hours to minutes and cutting operator effort by 90%</li>
-          <li>Automated the complete data logging and report generation pipeline, enabling fully automatic documentation without manual intervention</li>
-          <li>Analyzed experimental datasets from 24+ test configurations, providing structured insights that supported a 70% reduction in testing costs</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="timeline-item">
-      <div class="timeline-dot gray"></div>
-      <div class="timeline-card">
-        <div class="timeline-header">
-          <div>
-            <div class="timeline-role">CAD Engineer — Designer & Rapid Prototyping</div>
-            <div class="timeline-company">NS3DR Automation</div>
-          </div>
-          <span class="timeline-period">Jun 2021 – Sep 2022 · Surat, India</span>
-        </div>
-        <ul class="timeline-bullets">
-          <li>Designed precise 3D models and assemblies using SolidWorks, Siemens NX, and Creo Parametric for 20+ automotive manufacturing systems</li>
-          <li>Executed ANSYS FEA across 12+ design iterations, eliminating stress concentrations to improve structural integrity</li>
-          <li>Streamlined rapid prototyping by preparing parts for FDM and SLS 3D printing with G-Code processing</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SKILLS -->
-<div class="full-width-section" id="skills">
-  <div class="section">
-    <div class="section-label">02 — Technical skills</div>
-    <div class="skills-grid">
-      <div class="skill-card">
-        <div class="skill-card-icon" style="background: var(--teal-light);">🤖</div>
-        <h4>Robotics & Simulation</h4>
-        <div class="skill-pills">
-          <span class="skill-pill">MuJoCo</span><span class="skill-pill">NVIDIA Isaac Gym</span>
-          <span class="skill-pill">IPS Cable Sim</span><span class="skill-pill">Genesis</span>
-          <span class="skill-pill">Farama Gymnasium</span><span class="skill-pill">OMPL</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-card-icon" style="background: var(--blue-light);">🐍</div>
-        <h4>Programming</h4>
-        <div class="skill-pills">
-          <span class="skill-pill">Python</span><span class="skill-pill">C++</span>
-          <span class="skill-pill">C</span><span class="skill-pill">MATLAB</span>
-          <span class="skill-pill">SQL</span><span class="skill-pill">ROS2</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-card-icon" style="background: var(--amber-light);">🧠</div>
-        <h4>ML & Reinforcement Learning</h4>
-        <div class="skill-pills">
-          <span class="skill-pill">PyTorch</span><span class="skill-pill">JAX</span>
-          <span class="skill-pill">Stable-Baselines3</span><span class="skill-pill">SAC / TD3</span>
-          <span class="skill-pill">Scikit-Learn</span><span class="skill-pill">NumPy / SciPy</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-card-icon" style="background: var(--coral-light);">👁</div>
-        <h4>Computer Vision</h4>
-        <div class="skill-pills">
-          <span class="skill-pill">MVTec HALCON</span><span class="skill-pill">OpenCV</span>
-          <span class="skill-pill">3D Point Clouds</span><span class="skill-pill">Stereo Vision</span>
-          <span class="skill-pill">Surface-Based Matching</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-card-icon" style="background: var(--teal-light);">🔧</div>
-        <h4>CAD & Engineering</h4>
-        <div class="skill-pills">
-          <span class="skill-pill">SolidWorks</span><span class="skill-pill">Siemens NX</span>
-          <span class="skill-pill">CATIA</span><span class="skill-pill">Fusion 360</span>
-          <span class="skill-pill">ANSYS FEA</span><span class="skill-pill">Simulink</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-card-icon" style="background: var(--blue-light);">🛠</div>
-        <h4>Tools & Platforms</h4>
-        <div class="skill-pills">
-          <span class="skill-pill">Git</span><span class="skill-pill">VS Code</span>
-          <span class="skill-pill">Jira</span><span class="skill-pill">Confluence</span>
-          <span class="skill-pill">Linux</span><span class="skill-pill">Tableau</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- PROJECTS -->
-<section class="section" id="projects">
-  <div class="section-label">03 — Key projects</div>
-  <div class="projects-grid">
-
-    <div class="project-card">
-      <span class="project-tag robotics">Robotics / Simulation</span>
-      <h3>Master Thesis — Wire Harness Multi-Gripper Assembly</h3>
-      <p>Developed a fully automated robotic insertion process for automotive wire harnesses using dual FANUC CRX cobots. Built a MuJoCo simulation modeling flexible cable physics and multi-gripper contact dynamics, with hybrid trajectory optimization and sequence planning for collision-free assembly.</p>
-      <div class="project-tools">
-        <span class="project-tool">MuJoCo</span><span class="project-tool">Python</span>
-        <span class="project-tool">IPS Cable Sim</span><span class="project-tool">FANUC CRX</span>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <span class="project-tag rl">Reinforcement Learning</span>
-      <h3>WireHarness-MultiGripper-RL Environment</h3>
-      <p>Custom Gymnasium-compatible RL training environment for multi-gripper robotic wire harness assembly. Trained and benchmarked RL agents using Stable-Baselines3 (SAC, TD3). Officially listed in the Farama Foundation's Gymnasium third-party environment registry.</p>
-      <div class="project-tools">
-        <span class="project-tool">Gymnasium</span><span class="project-tool">MuJoCo</span>
-        <span class="project-tool">Stable-Baselines3</span><span class="project-tool">SAC / TD3</span>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <span class="project-tag cv">Computer Vision</span>
-      <h3>Robotic Cable Harness Plugging — Vision System</h3>
-      <p>Developed a 3D socket detection algorithm using MVTec HALCON and OpenCV achieving ±0.07 mm accuracy. Integrated with FANUC cobot via OPC-UA and Micro-Epsilon 3D stereo camera, validated over 1,000+ test cycles for automated cable assembly in premium automotive interiors.</p>
-      <div class="project-tools">
-        <span class="project-tool">HALCON</span><span class="project-tool">OpenCV</span>
-        <span class="project-tool">FANUC Cobot</span><span class="project-tool">OPC-UA</span>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <span class="project-tag cad">FEA / CAD</span>
-      <h3>FEA & Topological Optimization of Robotic Arms</h3>
-      <p>Conducted ANSYS FEA on 6-DOF robotic arm geometries (KUKA, FANUC), achieving 12% weight reduction via topological optimization while maintaining a 1.5 safety factor. Built physical proof-of-concept using FDM 3D printing and Raspberry Pi embedded control.</p>
-      <div class="project-tools">
-        <span class="project-tool">ANSYS</span><span class="project-tool">SolidWorks</span>
-        <span class="project-tool">FDM 3D Printing</span><span class="project-tool">Raspberry Pi</span>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <span class="project-tag patent">Patent / Robotics</span>
-      <h3>The Garuda — Mars Exploration UAV</h3>
-      <p>Co-designed an unmanned aerial vehicle for Mars planetary exploration with autonomous flight, soil testing, and power generation capabilities. Earned Honourable Innovation Award from Mars Society South Asia. Design patent secured (No. 356263-001, IP India).</p>
-      <div class="project-tools">
-        <span class="project-tool">ANSYS CFD</span><span class="project-tool">CAD</span>
-        <span class="project-tool">Autonomous Nav</span><span class="project-tool">Patent</span>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <span class="project-tag patent">Patent / Innovation</span>
-      <h3>Drawing Compass Operated by a Key</h3>
-      <p>Designed and patented a multi-functional compass and protractor with gear-driven angular movement and pulley-based radius measurement. 3D-printed prototype validated for students and architects. Patent No. 446560, Intellectual Property India.</p>
-      <div class="project-tools">
-        <span class="project-tool">CAD</span><span class="project-tool">FDM 3D Printing</span>
-        <span class="project-tool">Patent</span><span class="project-tool">Prototyping</span>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <span class="project-tag robotics">Robotics / AGV</span>
-      <h3>I-Robot — Automated Guided Vehicle for Restaurants</h3>
-      <p>Designed an AGV to autonomously deliver food and drinks between kitchen and tables, supporting contactless service and digital payment. Won the Innovation to Impact Award at the 11th GTU Innovation Sankul Awards 2022, backed by ₹1,90,000 government funding.</p>
-      <div class="project-tools">
-        <span class="project-tool">Arduino</span><span class="project-tool">Navigation</span>
-        <span class="project-tool">Prototyping</span><span class="project-tool">Award Winner</span>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <span class="project-tag cad">Robotics / Rover</span>
-      <h3>FORTUITY — The Mars Rover</h3>
-      <p>Co-designed a next-generation Mars rover for the International Rover Design Challenge by Mars Society South Asia. Researched NASA Perseverance subsystems, 3D-printed and tested wheels for Mars-like soil friction, and designed autonomous navigation capabilities. Ranked 11th in Asia.</p>
-      <div class="project-tools">
-        <span class="project-tool">CAD</span><span class="project-tool">ANSYS</span>
-        <span class="project-tool">3D Printing</span><span class="project-tool">Autonomous Nav</span>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- PUBLICATIONS -->
-<div class="full-width-section" id="publications">
-  <div class="section">
-    <div class="section-label">04 — Research & publications</div>
-    <div class="pub-card">
-      <span class="pub-badge">📄 Conference Paper</span>
-      <h3>Trajectory Planning and Optimization for Automated Cable Harness Installation using Multi-Gripper Systems</h3>
-      <p>Research on automated multi-gripper loading of automotive wire harnesses, covering collision-free trajectory planning, stress minimization, and optimal sequence generation across multiple harness branches.</p>
-      <div class="pub-venue">IEEE International Conference on Industrial Engineering and Engineering Management (IEEM)</div>
-    </div>
-    <div class="pub-card" style="border-left-color: var(--amber);">
-      <span class="pub-badge" style="background: var(--amber-light); color: #633806;">🏛 Farama Registry</span>
-      <h3>WireHarness-MultiGripper-RL — A Gymnasium-Compatible RL Environment</h3>
-      <p>Custom reinforcement learning training environment for multi-gripper robotic wire harness assembly, built on the Farama Foundation Gymnasium standard and officially listed in the Gymnasium third-party environment registry.</p>
-      <div class="pub-venue" style="color: #633806;">Farama Foundation · Gymnasium Third-Party Environments</div>
-    </div>
-    <div class="pub-card" style="border-left-color: var(--gray-mid);">
-      <span class="pub-badge" style="background: var(--gray-bg); color: var(--gray-mid);">🛩 Design Patent · 2025</span>
-      <h3>Unmanned Aerial Vehicle — The Garuda</h3>
-      <p>Design patent for an unmanned aerial vehicle capable of autonomous flight, soil sample collection, and LAVA tube mapping for planetary exploration on Mars.</p>
-      <div class="pub-venue" style="color: var(--gray-mid);">Intellectual Property India · Design No. 356263-001</div>
-    </div>
-    <div class="pub-card" style="border-left-color: var(--gray-mid);">
-      <span class="pub-badge" style="background: var(--gray-bg); color: var(--gray-mid);">✏ Patent · 2023</span>
-      <h3>Drawing Compass Operated by a Key</h3>
-      <p>Patented a multi-functional compass and protractor with gear-driven angular movement and pulley-based radius measurement, enabling precise multi-arc drawing in a single operation.</p>
-      <div class="pub-venue" style="color: var(--gray-mid);">Intellectual Property India · Patent No. 446560</div>
-    </div>
-  </div>
-</div>
-
-<!-- CONTACT -->
-<section class="section" id="contact">
-  <div class="section-label">05 — Get in touch</div>
-  <p style="font-size: 15px; color: var(--gray-mid); margin-bottom: 1.5rem;">Open to full-time roles in Robotics, Simulation Engineering, Robot Learning, and Automation across Germany & Europe.</p>
-  <div class="contact-grid">
-    <a href="mailto:kishanthummar261@gmail.com" class="contact-card">
-      <div class="contact-icon">✉</div>
-      <div><div class="contact-label">Email</div><div class="contact-val">kishanthummar261@gmail.com</div></div>
-    </a>
-    <a href="https://linkedin.com/in/kishanthummar28826" target="_blank" class="contact-card">
-      <div class="contact-icon" style="font-weight:700; font-size:14px;">in</div>
-      <div><div class="contact-label">LinkedIn</div><div class="contact-val">kishanthummar28826</div></div>
-    </a>
-    <a href="https://github.com/KishanThummar007" target="_blank" class="contact-card">
-      <div class="contact-icon" style="font-family: monospace; font-size: 14px;">&lt;/&gt;</div>
-      <div><div class="contact-label">GitHub</div><div class="contact-val">KishanThummar007</div></div>
-    </a>
-    <div class="contact-card">
-      <div class="contact-icon">📍</div>
-      <div><div class="contact-label">Location</div><div class="contact-val">Erlangen, Germany</div></div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <span>Kishan Thummar</span> · Robotics & Simulation Engineer · Erlangen, Germany · 2026
-</footer>
+<footer>&copy; 2026 Kishan Thummar</footer>
 
 </body>
 </html>
