@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kishan Thummar</title>
-<meta name="description" content="Kishan Thummar — M.Sc. Electromobility-ACES (FAU Erlangen-Nürnberg). Robotic simulation, world models and path planning for wire harness manufacturing.">
+<meta name="description" content="Kishan Thummar — M.Sc. Electromobility-ACES (FAU Erlangen-Nürnberg). Robotics simulation, reinforcement learning and world models for wire harness manipulation.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -145,7 +145,7 @@
     <header class="hero" id="about">
       <div class="hero-text">
         <h1>Kishan Thummar</h1>
-        <p class="role">M.Sc. Electromobility-ACES<br>Friedrich-Alexander-Universität Erlangen-Nürnberg</p>
+        <p class="role">Electromobility at FAU<br>Robotics Simulation &amp; Reinforcement Learning<br>Wire Harness Manipulation &amp; World Models</p>
         <ul class="links">
       <li><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Erlangen, Germany</li>
       <li><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><a href="mailto:kishanthummar261@gmail.com">Email</a></li>
@@ -158,8 +158,8 @@
 
     <section class="bio">
 
-      <p>I recently completed my master's degree (September 2026). I am interested in robotic simulation, world models and path planning, and in using them to automate wire harness manufacturing and assembly in the automotive industry.</p>
-      <p>In my master thesis at the Institute FAPS, I developed a MuJoCo framework that plans low-stress, collision-free trajectories and the picking order for loading a wire harness into a multi-gripper while avoiding wire tangling; this work has been accepted at IEEE IEEM 2026. My recent work focuses on <a href="https://ludwigstr.github.io/World-Models-for-DLO/" target="_blank" rel="noopener">benchmarking world models for wire harness handling</a>, comparing world and DLO dynamic models with physics simulators in predicting how cables move on a near-industry setup. In my project thesis, I developed a 3D vision algorithm that locates connector sockets for robotic plugging of a cable harness into a vehicle's centre console.</p>
+      <p>My work focuses on robotics simulation and motion planning for automotive wire harness handling. My academic background combines mechanical engineering with Electromobility-ACES at FAU Erlangen-Nürnberg. My current interests include reinforcement learning, world models and robotic manipulation of flexible objects.</p>
+      <p>For my master’s thesis at FAPS, I built a MuJoCo simulation and developed a trajectory planner for loading a wire harness into a multi-gripper. The planner uses simulated wire stress and a collision-proximity penalty to refine trajectories. I also co-authored a <a href="https://ludwigstr.github.io/World-Models-for-DLO/" target="_blank" rel="noopener">benchmark of learned models and physics simulators for predicting cable motion</a>. My earlier project thesis used MVTec HALCON to estimate the position and orientation of connector sockets from 3D point clouds.</p>
       <ul class="interests">
         <li>Physics-based simulation</li><li>World models</li><li>Real-to-sim calibration</li><li>Deformable linear objects</li>
         <li>Trajectory optimization</li><li>Wire harness automation</li><li>Reinforcement learning</li><li>Machine vision</li>
@@ -168,14 +168,14 @@
 
     <!-- PUBLICATIONS -->
     <section id="publications">
-      <h2>Publications &amp; patents</h2>
+      <h2>Research, software &amp; intellectual property</h2>
       <ol class="pubs">
         <li class="pub">
           <div class="pub-media contain zoom-115"><video autoplay muted loop playsinline preload="metadata" aria-label="Measured cables and predicted motion on the wire handling board"><source src="media/world-models-dlo.mp4?v=3" type="video/mp4"></video></div>
           <div class="pub-body">
           <div class="pub-kind">Conference paper</div>
           <h3><a class="pub-link" href="https://ludwigstr.github.io/World-Models-for-DLO/" target="_blank" rel="noopener">World Models for Deformable Linear Objects: Benchmarking Physics-Based and Learned Approaches for Wire Harness Manufacturing</a></h3>
-          <p class="venue">60th CIRP Conference on Manufacturing Systems (CIRP CMS 2027)</p>
+          <p class="venue">Research manuscript · CIRP CMS 2027</p>
           <p>A benchmark of six learned world and dynamics models and four physics simulators on a near-industry wire handling task, comparing how they represent and predict cable motion and physical properties such as stiffness and rest shape.</p>
           </div>
         </li>
@@ -184,8 +184,8 @@
           <div class="pub-body">
           <div class="pub-kind">Conference paper</div>
           <h3><a class="pub-link" href="https://github.com/KishanThummar007/Trajectory-Optimization-for-Wiring-Harnesses-connector-housings-using-Multi-Grippers" target="_blank" rel="noopener">Trajectory Planning and Optimization for Automated Cable Harness Installation using Multi-Gripper Systems</a></h3>
-          <p class="venue">IEEE International Conference on Industrial Engineering and Engineering Management (IEEM 2026)</p>
-          <p>Automated multi-gripper loading of automotive wire harnesses: collision-free trajectory planning, stress minimization and optimal sequence generation across multiple harness branches.</p>
+          <p class="venue">Accepted for IEEE International Conference on Industrial Engineering and Engineering Management (IEEM 2026)</p>
+          <p>Simulation-based trajectory planning and connector pickup sequence optimization for loading automotive wire harnesses into a multi-gripper, accounting for wire stress and collision proximity.</p>
           </div>
         </li>
         <li class="pub">
@@ -200,10 +200,10 @@
         <li class="pub">
           <div class="pub-media"><video autoplay muted loop playsinline preload="metadata" aria-label="The Garuda UAV flying over a Mars landscape"><source src="media/garuda-uav.mp4" type="video/mp4"></video></div>
           <div class="pub-body">
-          <div class="pub-kind">Design patent · 2025</div>
+          <div class="pub-kind">Registered design</div>
           <h3>Unmanned Aerial Vehicle — The Garuda</h3>
           <p class="venue">Intellectual Property India · Design No. 356263-001</p>
-          <p>An unmanned aerial vehicle for autonomous flight, soil sample collection and lava tube mapping for planetary exploration on Mars.</p>
+          <p>UAV concept co-designed with Team Vision9 for the 2021 International Planetary Aerial Systems Challenge. The team received an Innovation Award for its power generation system design.</p>
           </div>
         </li>
         <li class="pub">
@@ -225,12 +225,12 @@
         <div class="cv-row">
           <div class="cv-when"><span>Jul 2025 – Sep 2026</span><span>Nürnberg</span></div>
           <div>
-            <h3>Master Thesis — Robotic Wire Harness Assembly</h3>
+            <h3>Master’s Thesis — Robotic Wire Harness Assembly</h3>
             <p class="org">FAPS, Friedrich-Alexander-Universität Erlangen-Nürnberg</p>
             <ul>
-              <li>Built a wire harness multi-gripper simulation in MuJoCo to grasp wire branches from a production assembly board, creating a realistic environment for testing and validating robotic trajectories</li>
-              <li>Designed a hybrid trajectory pipeline combining grid-based global search with gradient-based local refinement, achieving 80% collision-free and wire-tension-minimized paths</li>
-              <li>Developed a branch picking sequence algorithm to determine the optimal loading order of wire harness branches into the multi-gripper, minimizing entanglement risk and collisions</li>
+              <li>Built a physics-based MuJoCo simulation of a multi-gripper picking connectors from a supply tray while handling the attached automotive wire harness.</li>
+              <li>Developed a trajectory planner combining global grid search with gradient-based refinement to minimize simulated wire stress and penalize collision proximity.</li>
+              <li>Reduced the connector pickup search space by grouping connectors by harness junction and evaluating pickup sequences within each group.</li>
             </ul>
           </div>
         </div>
@@ -240,21 +240,21 @@
             <h3>Software Development Intern — Fuel Cell Testing</h3>
             <p class="org">Robert Bosch GmbH</p>
             <ul>
-              <li>Developed a Python desktop application to automate fuel cell stack testing, reducing cycle time from hours to minutes and cutting operator effort by 90%</li>
-              <li>Automated the complete data logging and report generation pipeline, enabling fully automatic documentation without manual intervention</li>
-              <li>Analyzed experimental datasets from 24+ test configurations, providing structured insights that supported a 70% reduction in testing costs</li>
+              <li>Refined, tested and introduced a Python desktop application that automates measurement sequences on a fuel cell stack test bench.</li>
+              <li>Implemented temperature monitoring, a stack cooling routine, pass/fail checks against specified tolerances and automatic result export.</li>
+              <li>Developed a separate application for differential pressure measurement under controlled clamping force, and tested gasket leakage at different compression forces.</li>
             </ul>
           </div>
         </div>
         <div class="cv-row">
           <div class="cv-when"><span>Jun 2021 – Sep 2022</span><span>Surat, India</span></div>
           <div>
-            <h3>CAD Engineer — Designer &amp; Rapid Prototyping</h3>
+            <h3>CAD Design &amp; Rapid Prototyping</h3>
             <p class="org">NS3DR Automation</p>
             <ul>
-              <li>Designed precise 3D models and assemblies using SolidWorks, Siemens NX, and Creo Parametric for 20+ automotive manufacturing systems</li>
-              <li>Executed ANSYS FEA across 12+ design iterations, eliminating stress concentrations to improve structural integrity</li>
-              <li>Streamlined rapid prototyping by preparing parts for FDM and SLS 3D printing with G-Code processing</li>
+              <li>Designed parts and assemblies for automation equipment in SOLIDWORKS and Creo Parametric and prepared the designs for manufacturing.</li>
+              <li>Used Ansys to assess structural performance before prototyping and refined designs based on prototype tests and customer requirements.</li>
+              <li>Produced prototypes using FDM and SLS 3D printing and generated G-code for FDM prints in Ultimaker Cura.</li>
             </ul>
           </div>
         </div>
@@ -268,32 +268,32 @@
         <article class="project">
           <div class="kind">Robotics · Simulation</div>
           <h3>Master Thesis — Wire Harness Multi-Gripper Assembly</h3>
-          <p>Developed a fully automated robotic insertion process for automotive wire harnesses using dual FANUC CRX cobots. Built a MuJoCo simulation modeling flexible cable physics and multi-gripper contact dynamics, with hybrid trajectory optimization and sequence planning for collision-free assembly.</p>
-          <div class="tools">MuJoCo · Python · IPS Cable Sim · FANUC CRX</div>
+          <p>Built a MuJoCo simulation of a multi-branch automotive wire harness and multi-gripper end effector. Developed trajectory planning and connector pickup sequence optimization to account for cable stress and collision proximity. All thesis results were obtained in simulation.</p>
+          <div class="tools">MuJoCo · Python · Trajectory Optimization · Sequence Planning</div>
         </article>
         <article class="project">
-          <div class="kind">Reinforcement learning</div>
+          <div class="kind">Reinforcement Learning</div>
           <h3>WireHarness-MultiGripper-RL Environment</h3>
-          <p>Custom Gymnasium-compatible RL training environment for multi-gripper robotic wire harness assembly. Trained and benchmarked RL agents using Stable-Baselines3 (SAC, TD3). Officially listed in the Farama Foundation's Gymnasium third-party environment registry.</p>
-          <div class="tools">Gymnasium · MuJoCo · Stable-Baselines3 · SAC / TD3</div>
+          <p>Open-source Gymnasium environment for multi-gripper wire harness picking in MuJoCo, listed in the Gymnasium third-party environment directory. Provides a simulation framework for reinforcement learning experiments.</p>
+          <div class="tools">Gymnasium · MuJoCo · Python · Reinforcement Learning</div>
         </article>
         <article class="project">
-          <div class="kind">Computer vision</div>
+          <div class="kind">Computer Vision</div>
           <h3>Robotic Cable Harness Plugging — Vision System</h3>
-          <p>Developed a 3D socket detection algorithm using MVTec HALCON and OpenCV achieving ±0.07 mm accuracy. Integrated with FANUC cobot via OPC-UA and Micro-Epsilon 3D stereo camera, validated over 1,000+ test cycles for automated cable assembly in premium automotive interiors.</p>
-          <div class="tools">HALCON · OpenCV · FANUC Cobot · OPC-UA</div>
+          <p>Developed a 3D machine vision workflow in MVTec HALCON to detect connector sockets and estimate their 6-DOF pose. Used point clouds from a structured-light camera mounted on a FANUC cobot and integrated sequential detections through Python. Evaluated detection repeatability and height-change measurement.</p>
+          <div class="tools">MVTec HALCON · Python · 3D Point Clouds · FANUC Cobot</div>
         </article>
         <article class="project">
           <div class="kind">FEA · CAD</div>
           <h3>FEA &amp; Topological Optimization of Robotic Arms</h3>
-          <p>Conducted ANSYS FEA on 6-DOF robotic arm geometries (KUKA, FANUC), achieving 12% weight reduction via topological optimization while maintaining a 1.5 safety factor. Built physical proof-of-concept using FDM 3D printing and Raspberry Pi embedded control.</p>
-          <div class="tools">ANSYS · SolidWorks · FDM 3D Printing · Raspberry Pi</div>
+          <p>Worked in a team of five to analyse robotic arm links in Ansys and apply topology optimization. Produced 3D-printed prototypes of the original and optimized designs and compared them in tests.</p>
+          <div class="tools">Ansys · CAD · Topology Optimization · 3D Printing</div>
         </article>
         <article class="project">
-          <div class="kind">Patent · Robotics</div>
+          <div class="kind">UAV Design Concept</div>
           <h3>The Garuda — Mars Exploration UAV</h3>
-          <p>Co-designed an unmanned aerial vehicle for Mars planetary exploration with autonomous flight, soil testing, and power generation capabilities. Earned Honourable Innovation Award from Mars Society South Asia. Design patent secured (No. 356263-001, IP India).</p>
-          <div class="tools">ANSYS CFD · CAD · Autonomous Nav · Patent</div>
+          <p>Co-designed a UAV concept for Mars exploration with Team Vision9 for the 2021 International Planetary Aerial Systems Challenge, organised by the Mars Society South Asia. The team received an Innovation Award for its power generation system design. Registered design No. 356263-001.</p>
+          <div class="tools">UAV Concept · Engineering Design · Registered Design</div>
         </article>
         <article class="project">
           <div class="kind">Patent · Innovation</div>
@@ -304,14 +304,14 @@
         <article class="project">
           <div class="kind">Robotics · AGV</div>
           <h3>I-Robot — Automated Guided Vehicle for Restaurants</h3>
-          <p>Designed an AGV to autonomously deliver food and drinks between kitchen and tables, supporting contactless service and digital payment. Won the Innovation to Impact Award at the 11th GTU Innovation Sankul Awards 2022, backed by ₹1,90,000 government funding.</p>
-          <div class="tools">Arduino · Navigation · Prototyping · Award Winner</div>
+          <p>Co-designed an automated guided vehicle for contactless delivery of food and drinks from kitchens to dining tables. Built a working prototype with a student team. The project was selected for prototype development support under Gujarat’s Student Start-up and Innovation Policy (SSIP).</p>
+          <div class="tools">AGV · Robotics · Rapid Prototyping</div>
         </article>
         <article class="project">
           <div class="kind">Robotics · Rover</div>
           <h3>FORTUITY — The Mars Rover</h3>
-          <p>Co-designed a next-generation Mars rover for the International Rover Design Challenge by Mars Society South Asia. Researched NASA Perseverance subsystems, 3D-printed and tested wheels for Mars-like soil friction, and designed autonomous navigation capabilities. Ranked 11th in Asia.</p>
-          <div class="tools">CAD · ANSYS · 3D Printing · Autonomous Nav</div>
+          <p>Co-designed a Mars rover concept with Vision9 Robotics for the 2021 International Rover Design Challenge, organised by the Mars Society South Asia. Studied NASA rover mobility and power systems, including rocker-bogie suspension, and helped prototype and test wheels.</p>
+          <div class="tools">Rover Concept · Mechanical Design · 3D Printing</div>
         </article>
       </div>
     </section>
@@ -320,14 +320,13 @@
     <section id="skills">
       <h2>Skills</h2>
       <dl class="skills">
-        <dt>Robotics &amp; planning</dt><dd>Robotics, Motion Planning, Trajectory Optimization, Path Planning, Sensor Fusion</dd>
-        <dt>Simulation &amp; machine learning</dt><dd>Physics Simulation, MuJoCo, Machine Learning, PyTorch, Model Benchmarking</dd>
-        <dt>Machine vision</dt><dd>Machine Vision, Computer Vision, 3D Image Processing, MVTec HALCON</dd>
-        <dt>Software &amp; testing</dt><dd>Python (Programming Language), Software Development, Test Automation, Data Acquisition, Fuel Cells</dd>
-        <dt>CAD &amp; mechanical design</dt><dd>Computer-Aided Design (CAD), CAD/CAM Software, Mechanical Product Design, Engineering Design, SOLIDWORKS, Siemens NX, Creo Parametric</dd>
-        <dt>Analysis &amp; prototyping</dt><dd>Finite Element Analysis (FEA), Ansys Workbench, Topology Optimization, Rapid Prototyping, 3D Printing</dd>
-        <dt>Systems &amp; vehicles</dt><dd>Mechatronics, Production Systems, Automated Guided Vehicles (AGVs), Unmanned Aerial Vehicles (UAVs)</dd>
-        <dt>Research &amp; productivity</dt><dd>Qualitative Research, Microsoft Excel</dd>
+        <dt>Robotics &amp; Motion Planning</dt><dd>Robotic Manipulation, Motion Planning, Path Planning, Trajectory Optimization, Pickup Sequence Planning</dd>
+        <dt>Physics Simulation</dt><dd>MuJoCo, NVIDIA Isaac Sim &amp; Newton, Genesis, Physics-Based Modeling, Wire Harness Simulation</dd>
+        <dt>World Models &amp; Model Evaluation</dt><dd>World Models, Deformable Linear Object (DLO) Dynamics Modeling, Cable Motion Prediction, Model Benchmarking</dd>
+        <dt>Programming &amp; Robot Learning</dt><dd>Python, MATLAB, PyTorch, Reinforcement Learning Environment Development (Gymnasium)</dd>
+        <dt>3D Machine Vision</dt><dd>MVTec HALCON, 3D Point Cloud Processing, Surface-Based Matching, 6-DOF Pose Estimation</dd>
+        <dt>Test Automation &amp; Data Acquisition</dt><dd>Python Desktop Applications, Test Automation, Data Acquisition, Automated Pass/Fail Evaluation</dd>
+        <dt>Mechanical Design &amp; Prototyping</dt><dd>SOLIDWORKS, Creo Parametric, Siemens NX, Ansys Workbench, Finite Element Analysis (FEA), Topology Optimization, 3D Printing, Rapid Prototyping</dd>
       </dl>
     </section>
 
