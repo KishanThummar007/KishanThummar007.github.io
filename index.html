@@ -103,6 +103,7 @@
   .project h3 { font-size: 1.05rem; line-height: 1.35; margin-bottom: 0.4rem; }
   .project p { margin: 0 0 0.6rem; color: var(--ink-2); font-size: 0.92rem; flex: 1; }
   .tools { font-size: 0.8rem; color: var(--muted); }
+  .pub .tools { margin-top: 0.55rem; }
 
   /* SKILLS */
   .skills { display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 0.55rem 1.5rem; margin: 0; }
@@ -168,7 +169,7 @@
 
     <!-- PUBLICATIONS -->
     <section id="publications">
-      <h2>Research, software &amp; intellectual property</h2>
+      <h2>Publications &amp; Patents</h2>
       <ol class="pubs">
         <li class="pub">
           <div class="pub-media contain zoom-115"><video autoplay muted loop playsinline preload="metadata" aria-label="Measured cables and predicted motion on the wire handling board"><source src="media/world-models-dlo.mp4?v=3" type="video/mp4"></video></div>
@@ -177,6 +178,7 @@
           <h3><a class="pub-link" href="https://ludwigstr.github.io/World-Models-for-DLO/" target="_blank" rel="noopener">World Models for Deformable Linear Objects: Benchmarking Physics-Based and Learned Approaches for Wire Harness Manufacturing</a></h3>
           <p class="venue">Research manuscript · CIRP CMS 2027</p>
           <p>A benchmark of six learned world and dynamics models and four physics simulators on a near-industry wire handling task, comparing how they represent and predict cable motion and physical properties such as stiffness and rest shape.</p>
+          <div class="tools">World Models · Physics Simulation · Cable Motion Prediction · Model Benchmarking</div>
           </div>
         </li>
         <li class="pub">
@@ -186,6 +188,7 @@
           <h3><a class="pub-link" href="https://github.com/KishanThummar007/Trajectory-Optimization-for-Wiring-Harnesses-connector-housings-using-Multi-Grippers" target="_blank" rel="noopener">Trajectory Planning and Optimization for Automated Cable Harness Installation using Multi-Gripper Systems</a></h3>
           <p class="venue">Accepted for IEEE International Conference on Industrial Engineering and Engineering Management (IEEM 2026)</p>
           <p>Simulation-based trajectory planning and connector pickup sequence optimization for loading automotive wire harnesses into a multi-gripper, accounting for wire stress and collision proximity.</p>
+          <div class="tools">MuJoCo · Python · Trajectory Optimization · Pickup Sequence Planning</div>
           </div>
         </li>
         <li class="pub">
@@ -195,6 +198,7 @@
           <h3><a class="pub-link" href="https://github.com/KishanThummar007/WireHarness-MultiGripper-RL" target="_blank" rel="noopener">WireHarness-MultiGripper-RL — A Gymnasium-Compatible RL Environment</a></h3>
           <p class="venue">Farama Foundation · Gymnasium Third-Party Environments</p>
           <p>Reinforcement learning environment for multi-gripper robotic wire harness assembly, built on the Gymnasium standard and listed in the Gymnasium third-party environment registry.</p>
+          <div class="tools">Gymnasium · MuJoCo · Python · RL Environment Development</div>
           </div>
         </li>
         <li class="pub">
@@ -204,6 +208,7 @@
           <h3>Unmanned Aerial Vehicle — The Garuda</h3>
           <p class="venue">Intellectual Property India · Design No. 356263-001</p>
           <p>UAV concept co-designed with Team Vision9 for the 2021 International Planetary Aerial Systems Challenge. The team received an Innovation Award for its power generation system design.</p>
+          <div class="tools">Engineering Design · Computer-Aided Design (CAD) · UAV Design</div>
           </div>
         </li>
         <li class="pub">
@@ -213,6 +218,7 @@
           <h3>Drawing Compass Operated by a Key</h3>
           <p class="venue">Intellectual Property India · Patent No. 446560</p>
           <p>A multi-functional compass and protractor with gear-driven angular movement and pulley-based radius measurement, for precise multi-arc drawing in a single operation.</p>
+          <div class="tools">Computer-Aided Design (CAD) · Mechanical Design · 3D Printing · Rapid Prototyping</div>
           </div>
         </li>
       </ol>
@@ -266,52 +272,28 @@
       <h2>Projects</h2>
       <div class="projects">
         <article class="project">
-          <div class="kind">Robotics · Simulation</div>
-          <h3>Master Thesis — Wire Harness Multi-Gripper Assembly</h3>
-          <p>Built a MuJoCo simulation of a multi-branch automotive wire harness and multi-gripper end effector. Developed trajectory planning and connector pickup sequence optimization to account for cable stress and collision proximity. All thesis results were obtained in simulation.</p>
-          <div class="tools">MuJoCo · Python · Trajectory Optimization · Sequence Planning</div>
-        </article>
-        <article class="project">
-          <div class="kind">Reinforcement Learning</div>
-          <h3>WireHarness-MultiGripper-RL Environment</h3>
-          <p>Open-source Gymnasium environment for multi-gripper wire harness picking in MuJoCo, listed in the Gymnasium third-party environment directory. Provides a simulation framework for reinforcement learning experiments.</p>
-          <div class="tools">Gymnasium · MuJoCo · Python · Reinforcement Learning</div>
-        </article>
-        <article class="project">
           <div class="kind">Computer Vision</div>
           <h3>Robotic Cable Harness Plugging — Vision System</h3>
           <p>Developed a 3D machine vision workflow in MVTec HALCON to detect connector sockets and estimate their 6-DOF pose. Used point clouds from a structured-light camera mounted on a FANUC cobot and integrated sequential detections through Python. Evaluated detection repeatability and height-change measurement.</p>
-          <div class="tools">MVTec HALCON · Python · 3D Point Clouds · FANUC Cobot</div>
+          <div class="tools">MVTec HALCON · 3D Point Cloud Processing · Surface-Based Matching · 6-DOF Pose Estimation</div>
         </article>
         <article class="project">
           <div class="kind">FEA · CAD</div>
           <h3>FEA &amp; Topological Optimization of Robotic Arms</h3>
           <p>Worked in a team of five to analyse robotic arm links in Ansys and apply topology optimization. Produced 3D-printed prototypes of the original and optimized designs and compared them in tests.</p>
-          <div class="tools">Ansys · CAD · Topology Optimization · 3D Printing</div>
-        </article>
-        <article class="project">
-          <div class="kind">UAV Design Concept</div>
-          <h3>The Garuda — Mars Exploration UAV</h3>
-          <p>Co-designed a UAV concept for Mars exploration with Team Vision9 for the 2021 International Planetary Aerial Systems Challenge, organised by the Mars Society South Asia. The team received an Innovation Award for its power generation system design. Registered design No. 356263-001.</p>
-          <div class="tools">UAV Concept · Engineering Design · Registered Design</div>
-        </article>
-        <article class="project">
-          <div class="kind">Patent · Innovation</div>
-          <h3>Drawing Compass Operated by a Key</h3>
-          <p>Designed and patented a multi-functional compass and protractor with gear-driven angular movement and pulley-based radius measurement. 3D-printed prototype validated for students and architects. Patent No. 446560, Intellectual Property India.</p>
-          <div class="tools">CAD · FDM 3D Printing · Patent · Prototyping</div>
+          <div class="tools">Ansys Workbench · Finite Element Analysis (FEA) · Topology Optimization · 3D Printing</div>
         </article>
         <article class="project">
           <div class="kind">Robotics · AGV</div>
           <h3>I-Robot — Automated Guided Vehicle for Restaurants</h3>
           <p>Co-designed an automated guided vehicle for contactless delivery of food and drinks from kitchens to dining tables. Built a working prototype with a student team. The project was selected for prototype development support under Gujarat’s Student Start-up and Innovation Policy (SSIP).</p>
-          <div class="tools">AGV · Robotics · Rapid Prototyping</div>
+          <div class="tools">Robotics · Mechanical Design · Rapid Prototyping</div>
         </article>
         <article class="project">
           <div class="kind">Robotics · Rover</div>
           <h3>FORTUITY — The Mars Rover</h3>
           <p>Co-designed a Mars rover concept with Vision9 Robotics for the 2021 International Rover Design Challenge, organised by the Mars Society South Asia. Studied NASA rover mobility and power systems, including rocker-bogie suspension, and helped prototype and test wheels.</p>
-          <div class="tools">Rover Concept · Mechanical Design · 3D Printing</div>
+          <div class="tools">Mechanical Design · 3D Printing · Rapid Prototyping</div>
         </article>
       </div>
     </section>
